@@ -2983,10 +2983,9 @@ blockquote {
   font-weight: 400;
   line-height: 0.9;
   position: relative;
- 
 }
 
-.heading-style-h1-about-us{
+.heading-style-h1-about-us {
   letter-spacing: -0.02em;
   text-transform: uppercase;
   font-family: Coolvetica Condensed, sans-serif;
@@ -3826,7 +3825,17 @@ blockquote {
   border-radius: 50%;
   width: 5rem;
 }
-
+.staff_initials {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--black);
+  text-align: center;
+  line-height: 5rem;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: var(--light-grey);
+}
 .text-style-inlinelink {
   color: var(--black);
   text-decoration: underline;
@@ -4918,8 +4927,7 @@ blockquote {
   .heading-style-h1 {
     font-size: 7rem;
   }
-  .heading-style-h1-about-us{
-    
+  .heading-style-h1-about-us {
     font-size: 6rem;
   }
 
