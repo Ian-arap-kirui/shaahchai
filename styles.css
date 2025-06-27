@@ -472,11 +472,22 @@ button,
 
 .w-form-done {
   text-align: center;
-  background-color: #ddd;
+  background-color: transparent;
   padding: 20px;
   display: none;
 }
-
+.w-form-sent-done {
+  text-align: center;
+  background-color: transparent;
+  padding: 20px;
+  display: none;
+}
+.w-form-sent-fail {
+  background-color: #ffdede;
+  margin-top: 10px;
+  padding: 10px;
+  display: none;
+}
 .w-form-fail {
   background-color: #ffdede;
   margin-top: 10px;
@@ -3508,18 +3519,21 @@ blockquote {
   display: flex;
 }
 
-.form-error {
+.form-error,
+.form-error-1 {
   background-color: #ff656569;
   border-radius: 0.5rem;
   margin-top: 1rem;
   padding: 0.5rem 0.75rem;
 }
 
-.form-success {
+.form-success,
+.form-success-1 {
   background-color: var(--green);
   color: var(--black);
   border-radius: 1rem;
   padding: 1rem 1.5rem;
+  margin-top: 10px;
 }
 
 .footer_copyright {

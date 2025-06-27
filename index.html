@@ -16,10 +16,7 @@
       name="description"
     />
     <meta content="Shaah Chai Trading Ltd" property="twitter:title" />
-    <meta
-      content=""
-      property="og:image"
-    />
+    <meta content="" property="og:image" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
 
     <link href="./styles.css" rel="stylesheet" type="text/css" />
@@ -533,10 +530,9 @@
                 </div>
                 <div class="email-form_wrap w-form">
                   <form
-                    id="wf-form-Subscribe-Form"
-                    name="wf-form-Subscribe-Form"
-                    data-name="Subscribe Form"
-                    method="get"
+                    id="subscribe-form-1"
+                    onsubmit="sendSubscription1(event)"
+                    method="post"
                     class="email_form"
                     data-wf-page-id="67041c2a6a806901e0c7ed22"
                     data-wf-element-id="20844860-179d-c2b4-f707-f76c90f6c7a4"
@@ -545,8 +541,11 @@
                       <input
                         class="form-input is-green w-input"
                         maxlength="256"
-                        name="email"
-                        data-name="email"
+                        name="subscriber_email"
+                        placeholder="Enter your email"
+                        type="email"
+                        id="subscriber_email"
+                        required=""
                         style="
                           opacity: 0;
                           -webkit-transform: translate3d(0, 0.5em, 0)
@@ -561,36 +560,19 @@
                           transform: translate3d(0, 0.5em, 0) scale3d(1, 1, 1)
                             rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
                         "
-                        placeholder="Enter your email"
-                        type="email"
-                        id="email-2"
-                        required=""
                       />
                     </div>
                     <input
                       type="submit"
                       data-wait="Please wait..."
-                      style="
-                        -webkit-transform: translate3d(0, 0.5em, 0)
-                          scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
-                          skew(0, 0);
-                        -moz-transform: translate3d(0, 0.5em, 0)
-                          scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0)
-                          skew(0, 0);
-                        -ms-transform: translate3d(0, 0.5em, 0) scale3d(1, 1, 1)
-                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                        transform: translate3d(0, 0.5em, 0) scale3d(1, 1, 1)
-                          rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
-                        opacity: 0;
-                      "
                       class="button w-button"
                       value="Subscribe"
                     />
                   </form>
-                  <div class="form-success w-form-done">
+                  <div class="form-success-1 w-form-sent-done">
                     <div>Thank you! Your submission has been received!</div>
                   </div>
-                  <div class="form-error w-form-fail">
+                  <div class="form-error-1 w-form-sent-fail">
                     <div>
                       Oops! Something went wrong while submitting the form.
                     </div>
@@ -1381,10 +1363,9 @@
               </div>
               <div class="email-form_wrap w-form">
                 <form
-                  id="wf-form-Subscribe-Form"
-                  name="wf-form-Subscribe-Form"
-                  data-name="Subscribe Form"
-                  method="get"
+                  id="subscribe-form"
+                  onsubmit="sendSubscription(event)"
+                  method="post"
                   class="email_form"
                   data-wf-page-id="67041c2a6a806901e0c7ed22"
                   data-wf-element-id="d0e80abc-0b67-11d7-2a38-8a77c9d01eba"
@@ -1393,11 +1374,10 @@
                     <input
                       class="form-input w-input"
                       maxlength="256"
-                      name="email"
-                      data-name="email"
+                      name="subscriber_email"
                       placeholder="Enter your email"
                       type="email"
-                      id="email-4"
+                      id="subscriber_email"
                       required=""
                     />
                   </div>
@@ -1408,10 +1388,16 @@
                     value="Subscribe"
                   />
                 </form>
-                <div class="form-success w-form-done">
+                <div
+                  class="form-success w-form-sent-done"
+                  style="background-color: transparent"
+                >
                   <div>Thank you! Your submission has been received!</div>
                 </div>
-                <div class="form-error w-form-fail">
+                <div
+                  class="form-error w-form-sent-fail"
+                  style="background-color: transparent"
+                >
                   <div>
                     Oops! Something went wrong while submitting the form.
                   </div>
@@ -1497,6 +1483,83 @@
       src="https://cdn.prod.website-files.com/67041c2a6a806901e0c7ed1b/js/webflow.adf43da44.js"
       type="text/javascript"
     ></script>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script>
+      emailjs.init("qjykHZexVhhCG4hg3");
+      const subscribeBtn = document.querySelector(
+        '#subscribe-form input[type="submit"]'
+      );
+      const subscribeSuccess = document.querySelector(
+        "#subscribe-form + .form-success"
+      );
+      const subscribeFail = document.querySelector(
+        "#subscribe-form + .form-error"
+      );
+
+      // For the first subscription form
+      const subscribeBtn1 = document.querySelector(
+        '#subscribe-form-1 input[type="submit"]'
+      );
+      const subscribeSuccess1 = document.querySelector(
+        "#subscribe-form-1 + .form-success-1"
+      );
+      const subscribeFail1 = document.querySelector(
+        "#subscribe-form-1 + .form-error-1"
+      );
+
+      function sendSubscription(event) {
+        event.preventDefault();
+
+        subscribeBtn.value = "Subscribing...";
+        subscribeBtn.disabled = true;
+
+        emailjs
+          .sendForm("default_service", "template_33cxflo", "#subscribe-form")
+          .then(
+            () => {
+              subscribeBtn.value = "Subscribe";
+              subscribeBtn.disabled = false;
+              subscribeSuccess.style.display = "block";
+              subscribeFail.style.display = "none";
+              document.getElementById("subscribe-form").reset();
+            },
+            (err) => {
+              subscribeBtn.value = "Subscribe";
+              subscribeBtn.disabled = false;
+              subscribeSuccess.style.display = "none";
+              subscribeFail.style.display = "block";
+              console.error("Subscription Error:", err);
+            }
+          );
+      }
+      function sendSubscription1(event) {
+        event.preventDefault();
+
+        subscribeBtn1.value = "Subscribing...";
+        subscribeBtn1.disabled = true;
+
+        emailjs
+          .sendForm("default_service", "template_33cxflo", "#subscribe-form-1")
+          .then(
+            () => {
+              subscribeBtn1.value = "Subscribe";
+              subscribeBtn1.disabled = false;
+              subscribeSuccess1.style.display = "block";
+              subscribeFail1.style.display = "none";
+              document.getElementById("subscribe-form-1").reset();
+            },
+            (err) => {
+              subscribeBtn1.value = "Subscribe";
+              subscribeBtn1.disabled = false;
+              subscribeSuccess1.style.display = "none";
+              subscribeFail1.style.display = "block";
+              console.error("Subscription Error:", err);
+            }
+          );
+      }
+    </script>
   </body>
   <!-- Mirrored from elysian-tennis.webflow.io/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 19 Jun 2025 22:25:08 GMT -->
 </html>
