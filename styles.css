@@ -3158,7 +3158,7 @@ blockquote {
 }
 
 .section.is-video {
-  margin-top: 6rem;
+  margin-top: 10rem;
   padding-top: 5vh;
   padding-bottom: 0;
 }
@@ -3953,7 +3953,7 @@ blockquote {
   align-items: center;
   padding: 0.1rem 0.5rem;
   font-family: Coolvetica Condensed, sans-serif;
-  font-size: 1.125rem;
+  font-size: 1.35rem;
   line-height: 1;
   text-decoration: none;
   display: flex;
