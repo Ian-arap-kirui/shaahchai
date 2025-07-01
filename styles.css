@@ -2115,7 +2115,7 @@ textarea.w-select {
 :root {
   --black: #080808;
   --white: white;
-  --green: #ceff65;
+  --green: #7EBF1D;
   --dark-grey: darkgrey;
   --light-grey: #d8d8d8;
   --hero-video-radius: 3.125rem;
@@ -2995,6 +2995,15 @@ blockquote {
   line-height: 0.9;
   position: relative;
 }
+.heading-hero-section {
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  font-family: Coolvetica Condensed, sans-serif;
+  font-size: 6.5rem;
+  font-weight: 400;
+  line-height: 0.9;
+  position: relative;
+}
 
 .heading-style-h1-about-us {
   letter-spacing: -0.02em;
@@ -3519,7 +3528,13 @@ blockquote {
   display: flex;
 }
 
-.form-error,
+.form-error {
+  background-color: #ff656569;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.5rem 0.75rem;
+}
+
 .form-error-1 {
   background-color: #ff656569;
   border-radius: 0.5rem;
@@ -3527,7 +3542,13 @@ blockquote {
   padding: 0.5rem 0.75rem;
 }
 
-.form-success,
+.form-success {
+  background-color: var(--green);
+  color: var(--black);
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  margin-top: 10px;
+}
 .form-success-1 {
   background-color: var(--green);
   color: var(--black);
@@ -3907,7 +3928,7 @@ blockquote {
 
 .navbar {
   background-color: #ddd0;
-  height: 6rem;
+  height: 9rem;
 }
 
 .nav_wrap {
@@ -3943,7 +3964,7 @@ blockquote {
   z-index: 100;
   justify-content: center;
   align-items: center;
-  width: 10.5625rem;
+  width: 14rem;
   padding-left: 0;
   display: flex;
   position: absolute;
@@ -4759,7 +4780,7 @@ blockquote {
   }
 
   .navbar {
-    height: 4.5rem;
+    height: 6.5rem;
   }
 
   .nav_wrap {
@@ -4779,7 +4800,7 @@ blockquote {
   }
 
   .nav_brand {
-    width: 12rem;
+    width: 11.5rem;
     position: relative;
   }
 
