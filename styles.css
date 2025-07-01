@@ -3928,7 +3928,7 @@ blockquote {
 
 .navbar {
   background-color: #ddd0;
-  height: 9rem;
+  height: 10rem;
 }
 
 .nav_wrap {
@@ -4643,16 +4643,16 @@ blockquote {
   }
 
   .section.is-video {
-    margin-top: 4.5rem;
+    margin-top: 8rem;
     padding-top: 2.5rem;
   }
 
   .section.is-hero {
-    margin-top: 4.5rem;
+    margin-top: 9rem;
   }
 
   .section.is-contact {
-    margin-top: 4.5rem;
+    margin-top: 8rem;
     padding-top: 2.5rem;
   }
 
@@ -4663,7 +4663,7 @@ blockquote {
   .section.is-about-hero,
   .section.is-location-hero,
   .section.is-legal {
-    margin-top: 4.5rem;
+    margin-top: 8rem;
     padding-top: 2.5rem;
   }
 
@@ -4780,7 +4780,7 @@ blockquote {
   }
 
   .navbar {
-    height: 6.5rem;
+    height: 9rem;
   }
 
   .nav_wrap {
