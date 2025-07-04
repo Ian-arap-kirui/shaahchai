@@ -1,5 +1,5 @@
 <!-- Sample SVG for a tea leaf (save as .svg and upload to CDN) -->
 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
   <path d="M50 10C40 20 30 40 20 60C30 80 40 90 50 95C60 90 70 80 80 60C70 40 60 20 50 10Z" 
-        fill="#4CAF50" />
+        fill="#0b4718" />
 </svg>

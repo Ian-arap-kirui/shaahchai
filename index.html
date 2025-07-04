@@ -98,8 +98,8 @@
             >
               <img
                 loading="lazy"
-                src="/assets/shaah-chai-v7.png"
-                alt="Elysian Fitness Studios Logo Black"
+                src="/assets/Official-shaah-chai-logo.png"
+                alt=" "
                 class="nav_logo" />
 
               <!-- <p class="nav_logo heading-style-h5">Shaah Chai Trading Ltd</p> -->
@@ -1185,7 +1185,7 @@
               </div>
               <div class="max-width-full">
                 <a
-                  href="contact.html"
+                  href="/contact.html"
                   class="button is-secondary w-inline-block"
                   ><p>Request Samples</p>
                   <img
@@ -1198,6 +1198,43 @@
             </div>
           </div>
         </section>
+        <!-- Simple Chatbot for Shaah Chai Trading Ltd -->
+        <!-- Toggle Button -->
+        <button id="chatbot-toggle" title="Chat with us">💬</button>
+        <div
+          id="chatbot-nudge-text"
+          style="
+            position: fixed;
+            bottom: 90px;
+            right: 90px;
+            background-color: #4caf50;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 9999;
+          "
+        >
+          💬 Need help? Chat with us!
+        </div>
+        <!-- Chat Window -->
+        <div id="chat-container">
+          <div id="chat-header">
+            Shaah Chai Assistant
+            <button onclick="toggleChat()">✕</button>
+          </div>
+          <div class="chat-nudge">“What teas do you export?”</div>
+          <div class="chat-nudge">“Do you ship internationally?”</div>
+          <div id="chat-box"></div>
+          <div id="chat-input-area">
+            <input id="chat-input" type="text" placeholder="Ask something..." />
+            <button id="chat-send" onclick="sendMessage()">Send</button>
+          </div>
+        </div>
       </main>
       <footer class="section is-footer">
         <div class="container-large">
@@ -1207,8 +1244,8 @@
                 <div class="margin-bottom-8">
                   <img
                     loading="lazy"
-                    src="/assets/shaah-chai-v7.png"
-                    alt="Elysian Fitness Studios Logo Black"
+                    src="/assets/Official-shaah-chai-logo.png"
+                    alt=" "
                     class="nav_logo"
                   />
                 </div>
@@ -1454,6 +1491,104 @@
           );
       }
     </script>
+    <script>
+      const faqs = {
+        "what types of tea do you export":
+          "We export Kenyan black, purple, green, and white teas, as well as herbal infusions like hibiscus and chamomile.",
+        "tea types":
+          "We export Kenyan black, purple, green, and white teas, as well as herbal infusions like hibiscus and chamomile.",
+        "what teas do you export":
+          "We export Kenyan black, purple, green, and white teas, as well as herbal infusions like hibiscus and chamomile.",
+        "what certifications do your teas have":
+          "Our teas are Rainforest Alliance, Tea Board of Kenya and Fair Trade certified, with organic options available.",
+        "what are your minimum order quantities":
+          "Our MOQ starts at 1 pallet (approx. 50kg) for most products, with flexible options for established buyers.",
+        "how do you ensure quality control":
+          "We implement rigorous quality checks at every stage — from harvesting to packaging. We use pesticide-free farming and sustainable methods to ensure the highest quality. Samples are available for approval.",
+        "do you ship internationally":
+          "Yes, we export our teas internationally to various regions around the world.",
+        "how do you ensure quality tea":
+          "We ensure quality by practicing pesticide-free farming, sustainable cultivation, and rigorous checks from harvest to packaging.",
+        "is your tea pesticide-free":
+          "Yes, we practice pesticide-free farming to ensure safe and premium-quality tea for our customers.",
+        "are you licensed":
+          "Shaah Chai Trading Company is certified and licensed by the Tea Board of Kenya.",
+        "do you have a license":
+          "Shaah Chai Trading Company is certified and licensed by the Tea Board of Kenya.",
+        licensing:
+          "Shaah Chai Trading Company is certified and licensed by the Tea Board of Kenya.",
+        licencing:
+          "Shaah Chai Trading Company is certified and licensed by the Tea Board of Kenya.",
+        licensed:
+          "Shaah Chai Trading Company is certified and licensed by the Tea Board of Kenya.",
+        licence:
+          "Shaah Chai Trading Company is certified and licensed by the Tea Board of Kenya.",
+        license:
+          "Shaah Chai Trading Company is certified and licensed by the Tea Board of Kenya.",
+      };
+
+      const chatbotToggle = document.getElementById("chatbot-toggle");
+      const chatContainer = document.getElementById("chat-container");
+
+      const nudgeText = document.getElementById("chatbot-nudge-text");
+
+      // Nudge after 3 seconds
+      setTimeout(() => {
+        chatbotToggle.classList.add("nudge");
+        nudgeText.style.opacity = "1";
+
+        // Stop bounce & hide text after showing
+        setTimeout(() => {
+          chatbotToggle.classList.remove("nudge");
+          nudgeText.style.opacity = "0";
+        }, 4000); // Bounce lasts ~4 seconds including fade-out
+      }, 3000);
+
+      // Optional: Hide text immediately when button is clicked
+      chatbotToggle.addEventListener("click", () => {
+        nudgeText.style.display = "none";
+      });
+      chatbotToggle.addEventListener("click", toggleChat);
+
+      function toggleChat() {
+        chatContainer.style.display =
+          chatContainer.style.display === "flex" ? "none" : "flex";
+      }
+
+      function normalize(text) {
+        return text
+          .toLowerCase()
+          .replace(/[^\w\s]/gi, "")
+          .trim();
+      }
+
+      function sendMessage() {
+        const input = document.getElementById("chat-input");
+        const chatBox = document.getElementById("chat-box");
+        const userMessage = input.value.trim();
+
+        if (!userMessage) return;
+
+        // Append User Message (Right Bubble)
+        chatBox.innerHTML += `<div class="chat-bubble user-bubble"><strong>You:</strong><br>${userMessage}</div>`;
+
+        let response =
+          "Sorry, I couldn't find an answer for that. Please reach out at <a href='mailto:info@shaahchai.com'>info@shaahchai.com</a>.";
+
+        const normalizedInput = normalize(userMessage);
+        for (const key in faqs) {
+          if (normalizedInput.includes(normalize(key))) {
+            response = faqs[key];
+            break;
+          }
+        }
+
+        // Append Bot Response (Left Bubble)
+        chatBox.innerHTML += `<div class="chat-bubble bot-bubble"><strong>Shaah Chai:</strong><br>${response}</div>`;
+
+        chatBox.scrollTop = chatBox.scrollHeight;
+        input.value = "";
+      }
+    </script>
   </body>
-  <!-- Mirrored from elysian-tennis.webflow.io/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 19 Jun 2025 22:25:08 GMT -->
 </html>
