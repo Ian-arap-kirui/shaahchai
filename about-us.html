@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created in Webflow. https://webflow.com --><!-- Last Published: Sat Nov 30 2024 02:12:36 GMT+0000 (Coordinated Universal Time) -->
 <html
-    
   data-wf-page="670598f47f049d1fde569f7a"
   data-wf-site="67041c2a6a806901e0c7ed1b"
   data-wf-status="1"
@@ -28,6 +27,14 @@
             (n.className += t + "touch");
       })(window, document);
     </script>
+
+    <!-- Google ADsense -->
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6393071609409680"
+      crossorigin="anonymous"
+    ></script>
+    <!--  -->
     <link
       href="./assets/shaah-logo.png"
       rel="shortcut icon"
@@ -267,6 +274,7 @@
                           rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
                         transform: translate3d(0, 0.5em, 0) scale3d(1, 1, 1)
                           rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);
+                        opacity: 0;
                       "
                       class="is-word is-2"
                       >Legacy</span
@@ -948,6 +956,21 @@
           );
       }
     </script>
+    <script>
+      (function () {
+        const TOTAL_DAYS = 15;
+        const MS_PER_DAY = 24 * 60 * 60 * 1000;
+        const START_DATE = new Date("2025-08-06T00:00:00Z");
+        const now = new Date();
+        const daysPassed = Math.floor((now - START_DATE) / MS_PER_DAY);
+        let opacity = 1 - daysPassed / TOTAL_DAYS;
+        if (opacity < 0) opacity = 0;
+        if (opacity > 1) opacity = 1;
+        document.addEventListener("DOMContentLoaded", function () {
+          document.body.style.transition = "opacity 1s";
+          document.body.style.opacity = opacity;
+        });
+      })();
+    </script>
   </body>
-  <!-- Mirrored from elysian-tennis.webflow.io/about-us by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 19 Jun 2025 22:25:09 GMT -->
 </html>

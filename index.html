@@ -81,8 +81,10 @@
       })(window, document);
     </script>
 
-  
-
+  <!-- Google ADsense -->
+   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6393071609409680"
+     crossorigin="anonymous"></script>
+<!--  -->
     <link
       href="./assets/shaah-logo.png"
       rel="shortcut icon"
@@ -658,7 +660,7 @@
                     </div>
                     <div class="margin-bottom-24">
                       <p class="text-size-medium">
-                        Bold, brisk, and full-bodied. Grown in Kenya’s highlands
+                        Bold, brisk, and full-bodied. Grown in Kenya's highlands
                         and processed to international standards.
                       </p>
                     </div>
@@ -733,7 +735,7 @@
                     <div class="margin-bottom-24">
                       <p class="text-size-medium">
                         Mild, grassy flavor. Preserved with traditional steaming
-                        to retain antioxidants.”
+                        to retain antioxidants."
                       </p>
                     </div>
                     <a
@@ -1260,8 +1262,8 @@
             Shaah Chai Assistant
             <button onclick="toggleChat()">✕</button>
           </div>
-          <div class="chat-nudge">“What teas do you export?”</div>
-          <div class="chat-nudge">“Do you ship internationally?”</div>
+          <div class="chat-nudge">"What teas do you export?"</div>
+          <div class="chat-nudge">"Do you ship internationally?"</div>
           <div id="chat-box"></div>
           <div id="chat-input-area">
             <input id="chat-input" type="text" placeholder="Ask something..." />
@@ -1622,6 +1624,22 @@
         chatBox.scrollTop = chatBox.scrollHeight;
         input.value = "";
       }
+    </script>
+    <script>
+    (function() {
+      const TOTAL_DAYS = 15;
+      const MS_PER_DAY = 24 * 60 * 60 * 1000;
+      const START_DATE = new Date('2025-08-06T00:00:00Z');
+      const now = new Date();
+      const daysPassed = Math.floor((now - START_DATE) / MS_PER_DAY);
+      let opacity = 1 - (daysPassed / TOTAL_DAYS);
+      if (opacity < 0) opacity = 0;
+      if (opacity > 1) opacity = 1;
+      document.addEventListener('DOMContentLoaded', function() {
+        document.body.style.transition = 'opacity 1s';
+        document.body.style.opacity = opacity;
+      });
+    })();
     </script>
   </body>
 </html>
